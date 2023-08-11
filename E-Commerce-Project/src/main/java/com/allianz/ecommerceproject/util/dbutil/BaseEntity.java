@@ -11,7 +11,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.util.Date;
 import java.util.UUID;
 
-
 @MappedSuperclass
 @Data
 @EntityListeners({AuditingEntityListener.class})
@@ -20,7 +19,6 @@ public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
 
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
@@ -33,11 +31,8 @@ public class BaseEntity {
     @LastModifiedDate
     private Date updatedDate;
 
-
     @PrePersist
     protected void onCreate() {
         setUuid(java.util.UUID.randomUUID());
     }
-
-
 }

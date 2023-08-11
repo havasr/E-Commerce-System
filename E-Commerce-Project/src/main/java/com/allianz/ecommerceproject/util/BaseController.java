@@ -10,6 +10,7 @@ import java.util.UUID;
 
 public abstract class BaseController<DTO extends BaseDTO, Entity extends BaseEntity, RequestDTO extends BaseDTO,
         service extends BaseService<DTO, Entity, RequestDTO>> {
+
     protected abstract service getBaseService();
 
     @GetMapping("")
@@ -19,7 +20,7 @@ public abstract class BaseController<DTO extends BaseDTO, Entity extends BaseEnt
 
     @GetMapping("/{uuid}")
     public ResponseEntity<DTO> getByUuid(@PathVariable UUID uuid) {
-        DTO dto = getBaseService().getSettingByUuid(uuid);
+        DTO dto = getBaseService().getByUuid(uuid);
         if (dto == null) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

@@ -52,7 +52,7 @@ public class SellerService extends BaseService<SellerDTO, SellerEntity, SellerRe
     }
 
     @Override
-    public SellerDTO getSettingByUuid(UUID uuid) {
+    public SellerDTO getByUuid(UUID uuid) {
         SellerEntity sellerEntity = sellerRepository.findByUuid(uuid).orElse(null);
         if (sellerEntity == null) {
             return null;

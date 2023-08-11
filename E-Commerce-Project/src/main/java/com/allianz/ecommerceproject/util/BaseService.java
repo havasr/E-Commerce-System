@@ -20,12 +20,11 @@ public abstract class BaseService<DTO extends BaseDTO, Entity extends BaseEntity
         return null;
     }
 
-
     public Boolean delete(UUID uuid){
         return false;
     }
 
-    public DTO getSettingByUuid(UUID uuid){
+    public DTO getByUuid(UUID uuid){
         return null;
     }
 }

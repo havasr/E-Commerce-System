@@ -52,7 +52,7 @@ public class TaxService extends BaseService<TaxDTO, TaxEntity, TaxRequestDTO> {
     }
 
     @Override
-    public TaxDTO getSettingByUuid(UUID uuid) {
+    public TaxDTO getByUuid(UUID uuid) {
         TaxEntity taxEntity = taxRepository.findByUuid(uuid).orElse(null);
         if (taxEntity == null) {
             return null;
