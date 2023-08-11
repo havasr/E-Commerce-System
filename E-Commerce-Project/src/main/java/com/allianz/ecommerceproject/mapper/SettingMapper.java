@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Component
 public class SettingMapper implements IBaseMapper<SettingDTO, SettingEntity, SettingRequestDTO> {
     @Override
@@ -74,4 +73,12 @@ public class SettingMapper implements IBaseMapper<SettingDTO, SettingEntity, Set
     public List<SettingEntity> requestDtoListTOEntityList(List<SettingRequestDTO> settingRequestDTOS) {
         return null;
     }
+
+    @Override
+    public SettingEntity requestDTOToExistEntity(SettingRequestDTO settingRequestDTO, SettingEntity entity) {
+        entity.setKey(settingRequestDTO.getKey());
+        entity.setValue(settingRequestDTO.getValue());
+        return entity;
+    }
+
 }

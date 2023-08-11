@@ -11,7 +11,5 @@ import java.util.List;
 public class OrderRequestDTO extends BaseDTO {
 
     private CustomerRequestDTO customer;
-    private OrderStatusEnum orderStatus;
     private List<OrderItemRequestDTO> orderItemList;
-    private BigDecimal totalSellPrice;
 }

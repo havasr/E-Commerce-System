@@ -68,14 +68,17 @@ public class OrderMapper implements IBaseMapper<OrderDTO, OrderEntity, OrderRequ
         entity.setUuid(dto.getUuid());
         entity.setCreationDate(dto.getCreationDate());
         entity.setUpdatedDate(dto.getUpdatedDate());
-        entity.setOrderStatus(dto.getOrderStatus());
         entity.setOrderItemList(orderItemMapper.requestDtoListTOEntityList(dto.getOrderItemList()));
-        entity.setTotalSellPrice(dto.getTotalSellPrice());
         return entity;
     }
 
     @Override
     public List<OrderEntity> requestDtoListTOEntityList(List<OrderRequestDTO> orderRequestDTOS) {
+        return null;
+    }
+
+    @Override
+    public OrderEntity requestDTOToExistEntity(OrderRequestDTO orderRequestDTO, OrderEntity entity) {
         return null;
     }
 }

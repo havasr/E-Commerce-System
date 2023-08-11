@@ -76,4 +76,14 @@ public class TaxMapper implements IBaseMapper<TaxDTO, TaxEntity, TaxRequestDTO> 
     public List<TaxEntity> requestDtoListTOEntityList(List<TaxRequestDTO> taxRequestDTOS) {
         return null;
     }
+
+    @Override
+    public TaxEntity requestDTOToExistEntity(TaxRequestDTO taxRequestDTO, TaxEntity entity) {
+        entity.setName(taxRequestDTO.getName());
+        entity.setRate(taxRequestDTO.getRate());
+        entity.setCode(taxRequestDTO.getCode());
+        return entity;
+    }
+
+
 }

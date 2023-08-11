@@ -88,4 +88,9 @@ public class CategoryMapper implements IBaseMapper<CategoryDTO, CategoryEntity, 
     public List<CategoryEntity> requestDtoListTOEntityList(List<CategoryRequestDTO> categoryRequestDTOS) {
         return null;
     }
+
+    @Override
+    public CategoryEntity requestDTOToExistEntity(CategoryRequestDTO categoryRequestDTO, CategoryEntity entity) {
+        return null;
+    }
 }

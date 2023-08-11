@@ -2,6 +2,10 @@ package com.allianz.ecommerceproject.service;
 
 import com.allianz.ecommerceproject.database.entity.PersonEntity;
 import com.allianz.ecommerceproject.database.repository.PersonEntityRepository;
+import com.allianz.ecommerceproject.mapper.PersonMapper;
+import com.allianz.ecommerceproject.model.PersonDTO;
+import com.allianz.ecommerceproject.model.requestDTO.PersonRequestDTO;
+import com.allianz.ecommerceproject.model.requestDTO.PersonTCRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

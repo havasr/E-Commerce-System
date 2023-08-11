@@ -110,4 +110,9 @@ public class ProductMapper implements IBaseMapper<ProductDTO, ProductEntity, Pro
     public List<ProductEntity> requestDtoListTOEntityList(List<ProductRequestDTO> productRequestDTOS) {
         return null;
     }
+
+    @Override
+    public ProductEntity requestDTOToExistEntity(ProductRequestDTO productRequestDTO, ProductEntity entity) {
+        return null;
+    }
 }

@@ -21,6 +21,7 @@ public class SellerMapper implements IBaseMapper<SellerDTO, SellerEntity, Seller
         dto.setTc(entity.getTc());
         dto.setName(entity.getName());
         dto.setSurname(entity.getSurname());
+        dto.setEmail(entity.getEmail());
         dto.setShopName(entity.getShopName());
         dto.setTaxNumber(entity.getTaxNumber());
         dto.setTaxOffice(entity.getTaxOffice());
@@ -37,6 +38,7 @@ public class SellerMapper implements IBaseMapper<SellerDTO, SellerEntity, Seller
         entity.setUpdatedDate(dto.getUpdatedDate());
         entity.setTc(dto.getTc());
         entity.setName(dto.getName());
+        entity.setEmail(dto.getEmail());
         entity.setSurname(dto.getSurname());
         entity.setShopName(dto.getShopName());
         entity.setTaxNumber(dto.getTaxNumber());
@@ -75,6 +77,7 @@ public class SellerMapper implements IBaseMapper<SellerDTO, SellerEntity, Seller
         entity.setTc(dto.getTc());
         entity.setName(dto.getName());
         entity.setSurname(dto.getSurname());
+        entity.setEmail(dto.getEmail());
         entity.setShopName(dto.getShopName());
         entity.setTaxNumber(dto.getTaxNumber());
         entity.setTaxOffice(dto.getTaxOffice());
@@ -86,4 +89,18 @@ public class SellerMapper implements IBaseMapper<SellerDTO, SellerEntity, Seller
     public List<SellerEntity> requestDtoListTOEntityList(List<SellerRequestDTO> sellerRequestDTOS) {
         return null;
     }
+
+    @Override
+    public SellerEntity requestDTOToExistEntity(SellerRequestDTO sellerRequestDTO, SellerEntity entity) {
+        entity.setEmail(sellerRequestDTO.getEmail());
+        entity.setName(sellerRequestDTO.getName());
+        entity.setSurname(sellerRequestDTO.getSurname());
+        entity.setShopName(sellerRequestDTO.getShopName());
+        entity.setTaxNumber(sellerRequestDTO.getTaxNumber());
+        entity.setTaxOffice(sellerRequestDTO.getTaxOffice());
+        entity.setTc(sellerRequestDTO.getTc());
+        return entity;
+    }
+
+
 }

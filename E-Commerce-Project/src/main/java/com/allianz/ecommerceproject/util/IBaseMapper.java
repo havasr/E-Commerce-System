@@ -1,6 +1,7 @@
 package com.allianz.ecommerceproject.util;
 
 
+import com.allianz.ecommerceproject.util.BaseDTO;
 import com.allianz.ecommerceproject.util.dbutil.BaseEntity;
 
 import java.util.List;
@@ -17,8 +18,9 @@ public interface IBaseMapper<DTO extends BaseDTO, Entity extends BaseEntity, Req
 
     Entity requestDTOToEntity(RequestDTO dto);
 
-
     List<Entity> requestDtoListTOEntityList(List<RequestDTO> dtoList);
+
+    Entity requestDTOToExistEntity(RequestDTO requestDTO, Entity entity);
 
 
 }

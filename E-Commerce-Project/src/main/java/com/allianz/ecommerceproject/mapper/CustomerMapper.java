@@ -99,4 +99,9 @@ public class CustomerMapper implements IBaseMapper<CustomerDTO, CustomerEntity, 
     public List<CustomerEntity> requestDtoListTOEntityList(List<CustomerRequestDTO> customerRequestDTOS) {
         return null;
     }
+
+    @Override
+    public CustomerEntity requestDTOToExistEntity(CustomerRequestDTO customerRequestDTO, CustomerEntity entity) {
+        return null;
+    }
 }
