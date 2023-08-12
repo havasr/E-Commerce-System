@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public abstract class AddressMapper implements IBaseMapper<AddressDTO, AddressEntity, AddressRequestDTO> {
+public class AddressMapper implements IBaseMapper<AddressDTO, AddressEntity, AddressRequestDTO> {
     @Override
     public AddressDTO entityToDTO(AddressEntity entity) {
         AddressDTO addressDTO = new AddressDTO();
