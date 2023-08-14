@@ -1,6 +1,7 @@
 package com.allianz.ecommerceproject.util;
 
 import com.allianz.ecommerceproject.util.dbutil.BaseEntity;
+import com.allianz.ecommerceproject.util.dbutil.IBaseRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,8 +9,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-public abstract class BaseController<DTO extends BaseDTO, Entity extends BaseEntity, RequestDTO extends BaseDTO,
-        service extends BaseService<DTO, Entity, RequestDTO>> {
+@RestController
+public abstract class BaseController<
+        DTO extends BaseDTO,
+        Entity extends BaseEntity,
+        RequestDTO extends BaseDTO,
+        service extends BaseService<DTO, Entity, RequestDTO, IBaseRepository<Entity>, IBaseMapper<DTO, Entity, RequestDTO>>> {
 
     protected abstract service getBaseService();
 

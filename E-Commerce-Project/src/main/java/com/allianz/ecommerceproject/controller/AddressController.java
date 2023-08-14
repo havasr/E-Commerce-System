@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("address")
-public class AddressController extends BaseController<AddressDTO, AddressEntity, AddressRequestDTO, AddressService> {
+public class AddressController extends BaseController<AddressDTO, AddressEntity,AddressRequestDTO, AddressService> {
+
     @Autowired
     private AddressService addressService;
     @Override
