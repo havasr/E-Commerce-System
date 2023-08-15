@@ -2,8 +2,10 @@ package com.allianz.ecommerceproject.mapper;
 
 import com.allianz.ecommerceproject.database.entity.AddressEntity;
 import com.allianz.ecommerceproject.model.AddressDTO;
+import com.allianz.ecommerceproject.model.PageDTO;
 import com.allianz.ecommerceproject.model.requestDTO.AddressRequestDTO;
 import com.allianz.ecommerceproject.util.IBaseMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -65,6 +67,20 @@ public class AddressMapper implements IBaseMapper<AddressDTO, AddressEntity, Add
     @Override
     public AddressEntity requestDTOToExistEntity(AddressRequestDTO addressRequestDTO, AddressEntity entity) {
         return null;
+    }
+
+    @Override
+    public PageDTO<AddressDTO> pageEntityToPageDTO(Page<AddressEntity> entityPage) {
+        PageDTO<AddressDTO> pageDTO = new PageDTO<>();
+        pageDTO.setContent(entityListToDTOList(entityPage.getContent()));
+        pageDTO.setTotalPages(entityPage.getTotalPages());
+        pageDTO.setSize(entityPage.getSize());
+        pageDTO.setNumber(entityPage.getNumber());
+        pageDTO.setSort(entityPage.getSort());
+        pageDTO.setTotalElements(entityPage.getTotalElements());
+        pageDTO.setNumberOfElements(entityPage.getNumberOfElements());
+
+        return pageDTO;
     }
 
 

@@ -6,7 +6,6 @@ import com.allianz.ecommerceproject.mapper.BillMapper;
 import com.allianz.ecommerceproject.model.BillDTO;
 import com.allianz.ecommerceproject.model.requestDTO.BillRequestDTO;
 import com.allianz.ecommerceproject.util.BaseService;
-import com.allianz.ecommerceproject.util.dbutil.IBaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

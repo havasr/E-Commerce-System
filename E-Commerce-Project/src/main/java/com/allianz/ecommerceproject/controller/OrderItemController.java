@@ -1,6 +1,8 @@
 package com.allianz.ecommerceproject.controller;
 
 import com.allianz.ecommerceproject.database.entity.OrderItemEntity;
+import com.allianz.ecommerceproject.database.repository.OrderItemEntityRepository;
+import com.allianz.ecommerceproject.mapper.OrderItemMapper;
 import com.allianz.ecommerceproject.model.OrderItemDTO;
 import com.allianz.ecommerceproject.model.requestDTO.OrderItemRequestDTO;
 import com.allianz.ecommerceproject.service.OrderItemService;
@@ -11,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("order-item")
-public class OrderItemController extends BaseController<OrderItemDTO, OrderItemEntity, OrderItemRequestDTO, OrderItemService> {
+public class OrderItemController extends BaseController<OrderItemDTO, OrderItemEntity, OrderItemRequestDTO, OrderItemMapper,
+        OrderItemEntityRepository, OrderItemService> {
     @Autowired
     private OrderItemService orderItemService;
     @Override

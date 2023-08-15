@@ -1,6 +1,8 @@
 package com.allianz.ecommerceproject.controller;
 
 import com.allianz.ecommerceproject.database.entity.CategoryEntity;
+import com.allianz.ecommerceproject.database.repository.CategoryEntityRepository;
+import com.allianz.ecommerceproject.mapper.CategoryMapper;
 import com.allianz.ecommerceproject.model.CategoryDTO;
 import com.allianz.ecommerceproject.model.requestDTO.CategoryRequestDTO;
 import com.allianz.ecommerceproject.service.CategoryService;
@@ -11,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("category")
-public class CategoryController extends BaseController<CategoryDTO, CategoryEntity, CategoryRequestDTO, CategoryService> {
+public class CategoryController extends BaseController<CategoryDTO, CategoryEntity, CategoryRequestDTO, CategoryMapper,
+        CategoryEntityRepository, CategoryService> {
     @Autowired
     private CategoryService categoryService;
     @Override

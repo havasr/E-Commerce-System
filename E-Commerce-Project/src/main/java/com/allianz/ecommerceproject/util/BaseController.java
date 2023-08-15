@@ -1,7 +1,9 @@
 package com.allianz.ecommerceproject.util;
 
+import com.allianz.ecommerceproject.model.PageDTO;
 import com.allianz.ecommerceproject.util.dbutil.BaseEntity;
 import com.allianz.ecommerceproject.util.dbutil.IBaseRepository;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,14 +16,18 @@ public abstract class BaseController<
         DTO extends BaseDTO,
         Entity extends BaseEntity,
         RequestDTO extends BaseDTO,
-        service extends BaseService<DTO, Entity, RequestDTO, IBaseRepository<Entity>, IBaseMapper<DTO, Entity, RequestDTO>>> {
+        mapper extends IBaseMapper<DTO, Entity, RequestDTO>,
+        repository extends IBaseRepository<Entity>,
+        service extends BaseService<DTO, Entity, RequestDTO, repository, mapper>> {
 
     protected abstract service getBaseService();
 
-    @GetMapping("")
-    public ResponseEntity<List<DTO>> getAll() {
-        return new ResponseEntity<>(getBaseService().getAll(), HttpStatus.OK);
+    @PostMapping("get-all-filter")
+    public ResponseEntity<PageDTO<DTO>> getAll(@RequestBody BaseFilterRequestDTO baseFilterRequestDTO) {
+        return new ResponseEntity<>(getBaseService().getAll(baseFilterRequestDTO), HttpStatus.OK);
     }
+
+
 
     @GetMapping("/{uuid}")
     public ResponseEntity<DTO> getByUuid(@PathVariable UUID uuid) {

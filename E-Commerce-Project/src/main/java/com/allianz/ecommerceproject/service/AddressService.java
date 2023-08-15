@@ -10,8 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AddressService extends BaseService<AddressDTO, AddressEntity, AddressRequestDTO,
-        AddressEntityRepository, AddressMapper> {
+public class AddressService extends BaseService<AddressDTO, AddressEntity, AddressRequestDTO, AddressEntityRepository, AddressMapper> {
 
     @Autowired
     private AddressMapper addressMapper;

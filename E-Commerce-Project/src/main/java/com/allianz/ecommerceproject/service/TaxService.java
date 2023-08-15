@@ -6,6 +6,8 @@ import com.allianz.ecommerceproject.mapper.TaxMapper;
 import com.allianz.ecommerceproject.model.TaxDTO;
 import com.allianz.ecommerceproject.model.requestDTO.TaxRequestDTO;
 import com.allianz.ecommerceproject.util.BaseService;
+import com.allianz.ecommerceproject.util.IBaseMapper;
+import com.allianz.ecommerceproject.util.dbutil.IBaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,51 +15,27 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class TaxService extends BaseService<TaxDTO, TaxEntity, TaxRequestDTO> {
+public class TaxService extends BaseService<TaxDTO, TaxEntity, TaxRequestDTO, TaxEntityRepository
+        , TaxMapper> {
     @Autowired
     private TaxEntityRepository taxRepository;
     @Autowired
     private TaxMapper taxMapper;
 
     @Override
-    public TaxDTO save(TaxRequestDTO taxRequestDTO) {
-        TaxEntity tax = taxMapper.requestDTOToEntity(taxRequestDTO);
-        taxRepository.save(tax);
-        return taxMapper.entityToDTO(tax);
+    protected TaxMapper getBaseMapper() {
+        return taxMapper;
     }
 
     @Override
-    public List<TaxDTO> getAll() {
-        List<TaxEntity> taxEntities = taxRepository.findAll();
-        return taxMapper.entityListToDTOList(taxEntities);
+    protected TaxEntityRepository getBaseRepository() {
+        return taxRepository;
     }
 
+
+    //Override edebiliyoruz
     @Override
-    public TaxDTO update(UUID uuid, TaxRequestDTO taxRequestDTO) {
-        TaxEntity taxEntity = taxRepository.findByUuid(uuid).orElse(null);
-        if (taxEntity == null) {
-            return null;
-        }
-        return taxMapper.entityToDTO(taxRepository.save(taxMapper.requestDTOToExistEntity(taxRequestDTO, taxEntity)));
+    public TaxDTO update(UUID uuid, TaxRequestDTO requestDTO) {
+        return null;
     }
-
-    @Override
-    public Boolean delete(UUID uuid) {
-        TaxEntity taxEntity = taxRepository.findByUuid(uuid).orElse(null);
-        if (taxEntity == null) {
-            return false;
-        }
-        taxRepository.delete(taxEntity);
-        return true;
-    }
-
-    @Override
-    public TaxDTO getByUuid(UUID uuid) {
-        TaxEntity taxEntity = taxRepository.findByUuid(uuid).orElse(null);
-        if (taxEntity == null) {
-            return null;
-        }
-        return taxMapper.entityToDTO(taxEntity);
-    }
-
 }

@@ -1,12 +1,16 @@
 package com.allianz.ecommerceproject.mapper;
 
+import com.allianz.ecommerceproject.database.entity.AddressEntity;
 import com.allianz.ecommerceproject.database.entity.CategoryEntity;
 import com.allianz.ecommerceproject.database.entity.ProductEntity;
+import com.allianz.ecommerceproject.model.AddressDTO;
 import com.allianz.ecommerceproject.model.CategoryDTO;
+import com.allianz.ecommerceproject.model.PageDTO;
 import com.allianz.ecommerceproject.model.ProductDTO;
 import com.allianz.ecommerceproject.model.requestDTO.CategoryRequestDTO;
 import com.allianz.ecommerceproject.util.IBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -92,5 +96,20 @@ public class CategoryMapper implements IBaseMapper<CategoryDTO, CategoryEntity, 
     @Override
     public CategoryEntity requestDTOToExistEntity(CategoryRequestDTO categoryRequestDTO, CategoryEntity entity) {
         return null;
+    }
+
+    @Override
+    public PageDTO<CategoryDTO> pageEntityToPageDTO(Page<CategoryEntity> entityPage) {
+        PageDTO<CategoryDTO> pageDTO = new PageDTO<>();
+        pageDTO.setContent(entityListToDTOList(entityPage.getContent()));
+        pageDTO.setTotalPages(entityPage.getTotalPages());
+        pageDTO.setSize(entityPage.getSize());
+        pageDTO.setNumber(entityPage.getNumber());
+        pageDTO.setSort(entityPage.getSort());
+        pageDTO.setTotalElements(entityPage.getTotalElements());
+        pageDTO.setNumberOfElements(entityPage.getNumberOfElements());
+
+        return pageDTO;
+
     }
 }

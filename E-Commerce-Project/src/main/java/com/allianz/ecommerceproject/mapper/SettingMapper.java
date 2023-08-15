@@ -1,9 +1,12 @@
 package com.allianz.ecommerceproject.mapper;
 
 import com.allianz.ecommerceproject.database.entity.SettingEntity;
+import com.allianz.ecommerceproject.model.PageDTO;
+import com.allianz.ecommerceproject.model.ProductDTO;
 import com.allianz.ecommerceproject.model.SettingDTO;
 import com.allianz.ecommerceproject.model.requestDTO.SettingRequestDTO;
 import com.allianz.ecommerceproject.util.IBaseMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -79,6 +82,20 @@ public class SettingMapper implements IBaseMapper<SettingDTO, SettingEntity, Set
         entity.setKey(settingRequestDTO.getKey());
         entity.setValue(settingRequestDTO.getValue());
         return entity;
+    }
+
+    @Override
+    public PageDTO<SettingDTO> pageEntityToPageDTO(Page<SettingEntity> entityPage) {
+        PageDTO<SettingDTO> pageDTO = new PageDTO<>();
+        pageDTO.setContent(entityListToDTOList(entityPage.getContent()));
+        pageDTO.setTotalPages(entityPage.getTotalPages());
+        pageDTO.setSize(entityPage.getSize());
+        pageDTO.setNumber(entityPage.getNumber());
+        pageDTO.setSort(entityPage.getSort());
+        pageDTO.setTotalElements(entityPage.getTotalElements());
+        pageDTO.setNumberOfElements(entityPage.getNumberOfElements());
+
+        return pageDTO;
     }
 
 }

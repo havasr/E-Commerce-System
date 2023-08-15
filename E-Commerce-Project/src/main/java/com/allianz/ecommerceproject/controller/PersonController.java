@@ -1,6 +1,8 @@
 package com.allianz.ecommerceproject.controller;
 
 import com.allianz.ecommerceproject.database.entity.PersonEntity;
+import com.allianz.ecommerceproject.database.repository.PersonEntityRepository;
+import com.allianz.ecommerceproject.mapper.PersonMapper;
 import com.allianz.ecommerceproject.model.PersonDTO;
 import com.allianz.ecommerceproject.model.requestDTO.PersonRequestDTO;
 import com.allianz.ecommerceproject.service.PersonService;
@@ -10,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("person")
-public class PersonController extends BaseController<PersonDTO, PersonEntity, PersonRequestDTO, PersonService> {
+public class PersonController extends BaseController<PersonDTO, PersonEntity, PersonRequestDTO, PersonMapper,
+        PersonEntityRepository, PersonService> {
     @Autowired
     private PersonService personService;
     @Override

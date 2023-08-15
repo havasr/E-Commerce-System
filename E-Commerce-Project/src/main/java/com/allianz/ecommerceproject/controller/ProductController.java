@@ -1,6 +1,8 @@
 package com.allianz.ecommerceproject.controller;
 
 import com.allianz.ecommerceproject.database.entity.ProductEntity;
+import com.allianz.ecommerceproject.database.repository.ProductEntityRepository;
+import com.allianz.ecommerceproject.mapper.ProductMapper;
 import com.allianz.ecommerceproject.model.ProductDTO;
 import com.allianz.ecommerceproject.model.requestDTO.ProductRequestDTO;
 import com.allianz.ecommerceproject.service.ProductService;
@@ -11,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("product")
-public class ProductController extends BaseController<ProductDTO, ProductEntity, ProductRequestDTO, ProductService> {
+public class ProductController extends BaseController<ProductDTO, ProductEntity, ProductRequestDTO, ProductMapper,
+        ProductEntityRepository, ProductService> {
     @Autowired
     private ProductService productService;
     @Override

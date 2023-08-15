@@ -1,6 +1,8 @@
 package com.allianz.ecommerceproject.controller;
 
 import com.allianz.ecommerceproject.database.entity.TaxEntity;
+import com.allianz.ecommerceproject.database.repository.TaxEntityRepository;
+import com.allianz.ecommerceproject.mapper.TaxMapper;
 import com.allianz.ecommerceproject.model.TaxDTO;
 import com.allianz.ecommerceproject.model.requestDTO.TaxRequestDTO;
 import com.allianz.ecommerceproject.service.TaxService;
@@ -11,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/tax")
-public class TaxController extends BaseController<TaxDTO, TaxEntity, TaxRequestDTO, TaxService> {
+public class TaxController extends BaseController<TaxDTO, TaxEntity, TaxRequestDTO, TaxMapper, TaxEntityRepository,
+        TaxService> {
     @Autowired
     private TaxService taxService;
 

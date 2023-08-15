@@ -6,6 +6,8 @@ import com.allianz.ecommerceproject.mapper.SettingMapper;
 import com.allianz.ecommerceproject.model.SettingDTO;
 import com.allianz.ecommerceproject.model.requestDTO.SettingRequestDTO;
 import com.allianz.ecommerceproject.util.BaseService;
+import com.allianz.ecommerceproject.util.IBaseMapper;
+import com.allianz.ecommerceproject.util.dbutil.IBaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,8 @@ import java.util.Set;
 import java.util.UUID;
 
 @Service
-public class SettingService extends BaseService<SettingDTO,SettingEntity,SettingRequestDTO> {
+public class SettingService extends BaseService<SettingDTO,SettingEntity,SettingRequestDTO,
+        SettingEntityRepository, SettingMapper> {
 
     @Autowired
     SettingEntityRepository settingEntityRepository;
@@ -24,44 +27,12 @@ public class SettingService extends BaseService<SettingDTO,SettingEntity,Setting
     SettingMapper settingMapper;
 
     @Override
-    public SettingDTO save(SettingRequestDTO requestDTO) {
-        SettingEntity settingEntity = settingMapper.requestDTOToEntity(requestDTO);
-        settingEntityRepository.save(settingEntity);
-        return settingMapper.entityToDTO(settingEntity);
+    protected SettingMapper getBaseMapper() {
+        return settingMapper;
     }
 
     @Override
-    public List<SettingDTO> getAll(){
-        List<SettingEntity> settingEntities = settingEntityRepository.findAll();
-        return settingMapper.entityListToDTOList(settingEntities);
-    }
-
-    @Override
-    public SettingDTO update(UUID uuid, SettingRequestDTO requestDTO) {
-        SettingEntity settingEntity = settingEntityRepository.findByUuid(uuid).orElse(null);
-        if (settingEntity == null) {
-            return null;
-        }
-        return settingMapper.entityToDTO(settingEntityRepository
-                .save(settingMapper.requestDTOToExistEntity(requestDTO, settingEntity)));
-    }
-
-    @Override
-    public Boolean delete(UUID uuid) {
-        Optional<SettingEntity> settingEntity = settingEntityRepository.findByUuid(uuid);
-        if (settingEntity.isPresent()) {
-            settingEntityRepository.delete(settingEntity.get());
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public SettingDTO getByUuid(UUID uuid) {
-        Optional<SettingEntity> settingEntity = settingEntityRepository.findByUuid(uuid);
-        if (settingEntity.isPresent()) {
-            return settingMapper.entityToDTO(settingEntity.get());
-        }
-        return null;
+    protected SettingEntityRepository getBaseRepository() {
+        return settingEntityRepository;
     }
 }

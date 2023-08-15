@@ -1,6 +1,8 @@
 package com.allianz.ecommerceproject.controller;
 
 import com.allianz.ecommerceproject.database.entity.CustomerEntity;
+import com.allianz.ecommerceproject.database.repository.CustomerEntityRepository;
+import com.allianz.ecommerceproject.mapper.CustomerMapper;
 import com.allianz.ecommerceproject.model.CustomerDTO;
 import com.allianz.ecommerceproject.model.requestDTO.CustomerRequestDTO;
 import com.allianz.ecommerceproject.service.CustomerService;
@@ -11,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("customer")
-public class CustomerController extends BaseController<CustomerDTO, CustomerEntity, CustomerRequestDTO, CustomerService> {
+public class CustomerController extends BaseController<CustomerDTO, CustomerEntity, CustomerRequestDTO, CustomerMapper,
+        CustomerEntityRepository, CustomerService> {
     @Autowired
     private CustomerService customerService;
     @Override
